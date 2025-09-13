@@ -1,0 +1,11 @@
+expectation_suite_name: customer_dim_suite
+expectations:
+  - expectation_type: expect_column_values_to_not_be_null
+    kwargs:
+      column: coustomer_key
+  - expectation_type: expect_column_values_to_be_unique
+    kwargs:
+      column: coustomer_key
+  - expectation_type: expect_column_values_to_not_be_null
+    kwargs:
+      column: name
