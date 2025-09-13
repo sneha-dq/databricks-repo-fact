@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    customer_trans_fact_day0_load:
+      name: customer_trans_fact_day0_load
+      tasks:
+        - task_key: fact_day0_load
+          notebook_task:
+            notebook_path: /Workspace/Users/snehashrivastav@gmail.com/databricks-repo-fact/src/fact_day0_load
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

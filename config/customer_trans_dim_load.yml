@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    customer_trans_dim_load:
+      name: customer_trans_dim_load
+      tasks:
+        - task_key: dim_tables_bronze_load
+          notebook_task:
+            notebook_path: /Workspace/Users/snehashrivastav@gmail.com/databricks-repo-fact/src/customer_dim_bronze_load
+            source: WORKSPACE
+        - task_key: dim_tables_silver_load
+          depends_on:
+            - task_key: dim_tables_bronze_load
+          notebook_task:
+            notebook_path: /Workspace/Users/snehashrivastav@gmail.com/databricks-repo-fact/src/customer_dim_silver_load
+            source: WORKSPACE
+        - task_key: dim_tables_gold_load
+          depends_on:
+            - task_key: dim_tables_silver_load
+          notebook_task:
+            notebook_path: /Workspace/Users/snehashrivastav@gmail.com/databricks-repo-fact/src/customer_dim_gold_load
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
